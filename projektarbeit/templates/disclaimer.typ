@@ -12,8 +12,8 @@
     number-align: center,
   )
 
-  let body-font = "New Computer Modern"
-  let sans-font = "New Computer Modern Sans"
+  let body-font = "Source Sans Pro"
+  let sans-font = "Source Sans Pro"
 
   set text(
     font: body-font, 

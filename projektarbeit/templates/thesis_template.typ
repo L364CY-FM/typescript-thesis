@@ -9,6 +9,7 @@
   submissionDate: none,
   body,
 ) = {
+  import "@preview/abbr:0.1.1"
   set document(title: title, author: author)
   set page(
     margin: (left: 30mm, right: 30mm, top: 40mm, bottom: 40mm),
@@ -16,8 +17,8 @@
     number-align: center,
   )
 
-  let body-font = "New Computer Modern"
-  let sans-font = "New Computer Modern Sans"
+  let body-font = "Source Sans Pro"
+  let sans-font = "Source Sans Pro"
 
   set text(
     font: body-font, 
@@ -62,16 +63,6 @@
     indent: 2em
   )
   
-  
-  v(2.4fr)
-  pagebreak()
-
-
-  // Main body.
-  set par(justify: true, first-line-indent: 2em)
-
-  body
-
   // List of figures.
   pagebreak()
   heading(numbering: none)[Abbildungsverzeichnis]
@@ -87,6 +78,15 @@
     title: "",
     target: figure.where(kind: table),
   )
+
+  pagebreak()
+  abbr.list(title: "Abkürzüngsverzeichnis")
+
+  pagebreak()
+  // Main body.
+  set par(justify: true, first-line-indent: 2em)
+
+  body
 
   // Appendix.
   pagebreak()

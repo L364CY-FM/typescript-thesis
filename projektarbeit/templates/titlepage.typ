@@ -10,13 +10,13 @@
 ) = {
   set document(title: title, author: author)
   set page(
-    margin: (left: 30mm, right: 30mm, top: 40mm, bottom: 40mm),
+    margin: (left: 25mm, right: 25mm, top: 20mm, bottom: 20mm),
     numbering: none,
     number-align: center,
   )
 
-  let body-font = "New Computer Modern"
-  let sans-font = "New Computer Modern Sans"
+  let body-font = "Source Sans Pro"
+  let sans-font = "Source Sans Pro"
 
   set text(
     font: body-font, 
@@ -29,19 +29,21 @@
   
   // --- Title Page ---
   v(1cm)
-  align(center, image("../figures/logo.png", width: 30%))
+  align(center, image("../figures/logo.png", width: 80%))
+
+  v(8mm)
+  align(center, text(font: sans-font, 2em, weight: 200, "Bachelorarbeit"))
 
   v(5mm)
-  align(center, text(font: sans-font, 2em, weight: 700, "Hochschule für Technik, Wirtschaft und Kultur"))
+  align(center, text(font: sans-font, 1.5em, weight: 100, "zur Erlangung des akademischen Grades"))
 
   v(5mm)
-  align(center, text(font: sans-font, 1.5em, weight: 100, "Fakultät für Digitale Transformation"))
+  align(center, text(font: sans-font, 1.5em, weight: 100, degree))
+  
+  v(5mm)
+  align(center, text(font: sans-font, 1.5em, weight: 100, "im Studiengang Telekommunikationsinformatik \n der Fakultät Digitale Transformation \n der Hochschule für Technik, Wirtschaft und Kultur Leipzig"))
   
   v(15mm)
-
-  align(center, text(font: sans-font, 1.3em, weight: 100, degree))
-  v(8mm)
-  
 
   align(center, text(font: sans-font, 2em, weight: 700, title))
 
@@ -53,20 +55,18 @@
     grid(
       columns: 2,
       gutter: 1em,
-      strong("Author: "), author,
-      strong("Supervisor: "), supervisor,
-      strong("Advisors: "), advisors.join(", "),
-      strong("Start Date: "), startDate,
-      strong("Submission Date: "), submissionDate,
+      strong("Autor: "), author,
+      strong("Erstgutachter: "), supervisor,
+      strong("Zweitgutachter: "), advisors.join(", "),
+      strong("Abgabedatum: "), submissionDate,
     )
     } else {
       grid(
       columns: 2,
       gutter: 1em,
-      strong("Author: "), author,
-      strong("Supervisor: "), supervisor,
-      strong("Start Date: "), startDate,
-      strong("Submission Date: "), submissionDate,
+      strong("Autor: "), author,
+      strong("Erstgutachter: "), supervisor,
+      strong("Abgabedatum: "), submissionDate,
       )
     }
   )

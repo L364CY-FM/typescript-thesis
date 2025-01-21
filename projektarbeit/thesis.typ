@@ -5,13 +5,12 @@
 #import "acknowledgement.typ": *
 #import "abstract.typ": *
 #import "metadata.typ": *
-
-
-#cover(
-  title: title,
-  degree: degree,
-  author: author,
-)
+#import "@preview/abbr:0.1.1"
+// #cover(
+//   title: title,
+//   degree: degree,
+//   author: author,
+// )
 
 #titlepage(
   title: title,
@@ -35,6 +34,12 @@
 
 #abstract()
 
+// Abkürzungen
+#abbr.make(
+  ("DSGVO", "Datenschutz-Grundverordnung"),
+)
+#abbr.style(text)
+
 #show: project.with(
   title: title,
   degree: degree,
@@ -46,7 +51,8 @@
 )
 
 = Einleitung
-#lorem(100)
+#lorem(100) #abbr.a[DSGVO]
+#lorem(100) #abbr.a[DSGVO]
 
 = Zitieren
 Dieser Satz wurde zitiert @bruegge2004object.
