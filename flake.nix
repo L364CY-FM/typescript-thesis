@@ -12,9 +12,9 @@
         pkgs.typst
       ];
 
-      # Optional shellHook for additional configuration
-      # shellHook = ''
-      # '';
+      shellHook = ''
+        export TYPST_FONT_PATHS="./Source_Sans_Pro_ttf/Source_Sans_Pro_ttf/" 
+      '';
     };
   };
 }

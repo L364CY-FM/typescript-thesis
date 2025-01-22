@@ -32,16 +32,16 @@
   align(center, image("../figures/logo.png", width: 80%))
 
   v(8mm)
-  align(center, text(font: sans-font, 2em, weight: 200, "Bachelorarbeit"))
+  align(center, text(font: sans-font, 2em, weight: 600, "Bachelorarbeit"))
 
   v(5mm)
-  align(center, text(font: sans-font, 1.5em, weight: 100, "zur Erlangung des akademischen Grades"))
+  align(center, text(font: sans-font, 1.5em, weight: 400, "zur Erlangung des akademischen Grades"))
 
   v(5mm)
-  align(center, text(font: sans-font, 1.5em, weight: 100, degree))
+  align(center, text(font: sans-font, 1.5em, weight: 400, degree))
   
   v(5mm)
-  align(center, text(font: sans-font, 1.5em, weight: 100, "im Studiengang Telekommunikationsinformatik \n der Fakultät Digitale Transformation \n der Hochschule für Technik, Wirtschaft und Kultur Leipzig"))
+  align(center, text(font: sans-font, 1.5em, weight: 400, "im Studiengang Telekommunikationsinformatik \n der Fakultät Digitale Transformation \n der Hochschule für Technik, Wirtschaft und Kultur Leipzig"))
   
   v(15mm)
 
