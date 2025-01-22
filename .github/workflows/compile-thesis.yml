@@ -1,0 +1,42 @@
+name: Compile Thesis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted # Verwendet den self-hosted Runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Nix flake environment
+        run: |
+          # Stelle sicher, dass nix flakes aktiviert ist
+          nix --experimental-features 'flakes'  # Falls noch nicht aktiviert
+
+      - name: Remove old PDF if exists
+        run: |
+          if [ -f output/Bachelorarbeit.pdf ]; then
+            rm output/Bachelorarbeit.pdf
+          fi
+
+      - name: Enter nix develop environment and compile Thesis
+        run: |
+          # Verwende nix develop mit deinem Flake, um die Abhängigkeiten zu installieren
+          nix develop --extra-experimental-features "nix-command flakes" --option filter-syscalls false
+          mkdir -p output
+          cd projektarbeit
+          typst compile thesis.typ ../output/bachelorarbeit.pdf
+
+      - name: Upload PDF as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Bachelorarbeit
+          path: output/Bachelorarbeit.pdf
