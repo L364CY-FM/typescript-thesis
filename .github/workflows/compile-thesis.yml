@@ -36,7 +36,7 @@ jobs:
           typst compile thesis.typ ../output/bachelorarbeit.pdf
 
       - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Bachelorarbeit
           path: output/Bachelorarbeit.pdf
