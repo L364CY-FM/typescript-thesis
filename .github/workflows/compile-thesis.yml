@@ -39,11 +39,9 @@ jobs:
 
       - name: Enter nix develop environment and compile Thesis
         run: |
-          # Source the Nix profile for the current shell session
-          . $HOME/.nix-profile/etc/profile.d/nix.sh
           mkdir -p output
-          cd projektarbeit
           nix develop --option filter-syscalls false
+          cd projektarbeit
           typst compile thesis.typ ../output/bachelorarbeit.pdf
 
       - name: Upload PDF as artifact
