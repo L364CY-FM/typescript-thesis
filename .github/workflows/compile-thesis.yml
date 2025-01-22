@@ -16,6 +16,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Remove old PDF if exists
+        run: |
+          if [ -f output/Bachelorarbeit.pdf ]; then
+            rm output/Bachelorarbeit.pdf
+          fi
+
       - name: Install Nix
         run: |
           # Install Nix on Ubuntu-based systems
@@ -23,22 +29,6 @@ jobs:
           # Source the Nix profile for this shell session
           . $HOME/.nix-profile/etc/profile.d/nix.sh
           nix --version
-
-      - name: Enable experimental features for Nix flakes
-        run: |
-          # Source the Nix profile and enable experimental features
-          . $HOME/.nix-profile/etc/profile.d/nix.sh
-          mkdir -p ~/.config/nix
-          echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
-
-      - name: Remove old PDF if exists
-        run: |
-          if [ -f output/Bachelorarbeit.pdf ]; then
-            rm output/Bachelorarbeit.pdf
-          fi
-
-      - name: Enter nix develop environment and compile Thesis
-        run: |
           mkdir -p output
           nix develop --option filter-syscalls false
           cd projektarbeit
