@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted # Verwendet den self-hosted Runner
+    runs-on: self-hosted
     container:
       image: nixos/nix:latest
 
@@ -20,8 +20,8 @@ jobs:
 
       - name: Set up Nix flake environment
         run: |
-          # Stelle sicher, dass nix flakes aktiviert ist
-          nix --experimental-features 'flakes'  # Falls noch nicht aktiviert
+          # Enable experimental features if not already enabled
+          nix --experimental-features "nix-command flakes" info
 
       - name: Remove old PDF if exists
         run: |
@@ -31,14 +31,15 @@ jobs:
 
       - name: Enter nix develop environment and compile Thesis
         run: |
-          # Verwende nix develop mit deinem Flake, um die Abhängigkeiten zu installieren
-          nix develop --extra-experimental-features "nix-command flakes" --option filter-syscalls false
-          mkdir -p output
-          cd projektarbeit
-          typst compile thesis.typ ../output/bachelorarbeit.pdf
+          # Ensure the 'typst' command and dependencies are available
+          nix develop --extra-experimental-features "nix-command flakes" --option filter-syscalls false --command bash -c "
+          mkdir -p output &&
+          cd projektarbeit &&
+          typst compile thesis.typ ../output/Bachelorarbeit.pdf
+          "
 
       - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Bachelorarbeit
           path: output/Bachelorarbeit.pdf
