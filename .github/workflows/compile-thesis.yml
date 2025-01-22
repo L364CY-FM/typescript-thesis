@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: self-hosted # Verwendet den self-hosted Runner
+    container:
+      image: nixos/nix:latest
 
     steps:
       - name: Checkout Repository
