@@ -5,4 +5,5 @@
 #let advisors = ("Max Mustermann, M.Sc.",)
 #let author = "(Author)"
 #let location = "(Location)"
+#let startDate = "(Start Date)"
 #let submissionDate = "(Handover Date)"
