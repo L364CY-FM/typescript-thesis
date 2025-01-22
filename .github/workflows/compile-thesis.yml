@@ -30,7 +30,7 @@ jobs:
           . $HOME/.nix-profile/etc/profile.d/nix.sh
           nix --version
           mkdir -p output
-          nix develop --option filter-syscalls false
+          nix develop --option filter-syscalls false --extra-experimental-features nix-command
           cd projektarbeit
           typst compile thesis.typ ../output/bachelorarbeit.pdf
 
