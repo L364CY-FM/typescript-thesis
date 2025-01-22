@@ -20,12 +20,14 @@ jobs:
         run: |
           # Install Nix on Ubuntu-based systems
           curl -L https://nixos.org/nix/install | sh
+          # Source the Nix profile for this shell session
           . $HOME/.nix-profile/etc/profile.d/nix.sh
           nix --version
 
-      - name: Enable Nix flakes feature
+      - name: Enable experimental features for Nix flakes
         run: |
-          # Enable experimental features for Nix flakes
+          # Source the Nix profile and enable experimental features
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
           mkdir -p ~/.config/nix
           echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
@@ -37,7 +39,8 @@ jobs:
 
       - name: Enter nix develop environment and compile Thesis
         run: |
-          # Run Nix develop and compile the thesis
+          # Source the Nix profile for the current shell session
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
           mkdir -p output
           cd projektarbeit
           nix develop --option filter-syscalls false
